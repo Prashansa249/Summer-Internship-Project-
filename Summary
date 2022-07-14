@@ -1,0 +1,58 @@
+I worked on FDA MAUDE & External Compliance data insight project. Before going deep into the project, I want to give you a little bit insight on the Data and business modules.
+There are 2 business modules what we can see in this project - MAUDE and External compliance.
+MAUDE stands for 'Manufacturer And User facility Device Experience'. It is basically medical device reporting analysis . 
+In Maude, we digitally analyze MDRs filed against medical devices available in 4 categories -
+Recall, Inspection  Citation, Inspection classification and Refusal to get an idea where BD stands in the advancing market of Medical devices.
+We aim at not only analyzing the current position of BD at various fronts but also predicting the future scope of improvement by using the data available. For achieving the required results, a complete data engineering and data visualization setup needs to be done.
+I worked on the ETL process to extract, transform and load data using Kimball approach so that we can load data from FDA and External Compliance repository to the ETL tool without losing and corrupting any data.
+
+Business Case and Objective -
+The Challenges we face today in our analysis are -
+We require to do review and analyze the FDA Maude and external compliance data to get deep insights from data such as total number Of MDRs reported 
+number of malfunctions faced by BD devices as compared to other companies, the fronts where we leading as well as the domains where we lag behind.
+But there was limited capability to pull the data to perform analysis.Also the approaches being used were highly reactive and there was huge possibility of losing data or getting data corrupted.
+So my project for these two months aimed at developing a central hub where we have all the data loaded after transformation which can be further used for analysis. Also providing analysis in the form of matrices , summaries ,graphs to simplify the process.
+Creating conditions which can be used by the company to assess data better for key insights.
+
+Solution Overview -
+After going through the current challenges ,here is the overview of the solution implemented to curb the technical barriers .
+and achieve the main goal. A central repository is developed which have collective information of all the data and a working prototype of Maude and External Compliance Data Handler . 
+It will enable several business key performance Indicators making pathway for business growth .
+
+High Level Process Flow -
+Our process is divided into 4  segments: 
+Firstly , we are doing source identification from where we will get data i.e. FDA MAUDE and external compliance,then we will check if our infrastructure is good enough for data handling which is Azure Data Factory . 
+SEcondly , data integration in which we developed the pipelines and data flows, applied source control, quality checks and handled pipeline failures. All these are integrated processes.
+After data orchestration , we are doing data sanity, which is nothing but checking authentication and authorization by generating password and key vaults and providing data access only through API gateway. 
+All these processes are continuously monitored.
+
+High Level Solution Design -
+Earlier there were multiple heterogeneous data sources which were processed manually, thus resulting in multiple output files again managed manually. Out of the total process, more than 70% of the time was spent on data collection and analysis.
+Now we have automated augmented process and azure data pipelines and data flows for data collection and storage in data warehouse and data pulls for further analysis performed using Power BI as a service.
+
+The first step of the ETL process is extraction. In this step, data from various source systems is extracted . It is important to extract the data from various source systems and store it into the staging area first and not directly into the data warehouse because the extracted data is in various formats and can be corrupted also.
+Hence loading it directly into the data warehouse may damage it and rollback will be much more difficult. Therefore, this is one of the most important steps of ETL process.
+
+Transformation: 
+The second step of the ETL process is transformation. In this step, a set of rules or functions are applied on the extracted data to convert it into a single standard format. It may involve following processes/tasks: 
+Filtering – loading only certain attributes into the data warehouse.
+Cleaning – filling up the NULL values with some default values.
+Joining – joining multiple attributes into one.
+Splitting – splitting a single attribute into multiple attributes.
+Sorting – sorting tuples on the basis of some attribute (generally key-attribute).
+
+Loading: 
+The third and final step of the ETL process is loading. In this step, the transformed data is finally loaded into the data warehouse. 
+
+Integration Design -
+There are 5 input data sources. I injested them at Azure Blob Storage and then made ETL pipelines to extract the data from text files,
+convert into csv files to load into blob storage and performed union, sort and changed certain datatypes to transform data into single standard format.
+Then loaded the clean csv files into Azure Sql database as sink, thus completely the data flow from source to sink.
+
+Now the data was loaded in our sql DB which acts as our data warehouse. 
+After that we performed analysis on our data and used it to make a complete Power BI report with landing page, separate pages for recall, inspection citation, inspection classification, refusal and MAUDE data as well a summary report.
+This sums up my Data Visualisation report.
+
+
+
+
